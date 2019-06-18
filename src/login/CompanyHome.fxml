@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #bb9d9d;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Button layoutY="250.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="235.0" text="Add car" />
+      <Button layoutY="370.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="235.0" text="Edit car details" />
+      <Button layoutY="492.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="235.0" text="Remove car" />
+      <Button layoutY="611.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="235.0" text="View all cars" />
+   </children>
+</AnchorPane>

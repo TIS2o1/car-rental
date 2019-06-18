@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.SignUpCompanyController">
+   <children>
+      <Label layoutX="205.0" layoutY="217.0" prefHeight="66.0" prefWidth="144.0" text="email">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
+      <Label layoutX="131.0" layoutY="411.0" prefHeight="66.0" prefWidth="189.0" text="password">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="310.0" prefHeight="66.0" prefWidth="290.0" text="company name">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="512.0" prefHeight="66.0" prefWidth="290.0" text="confirm password">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="115.0" layoutY="611.0" prefHeight="66.0" prefWidth="205.0" text="contact no.">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
+      <Label layoutX="169.0" layoutY="708.0" prefHeight="66.0" prefWidth="144.0" text="address">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
+      <Button layoutX="557.0" layoutY="874.0" mnemonicParsing="false" onAction="#SignUpAction" text="Sign Up" />
+      <TextField fx:id="email" layoutX="362.0" layoutY="225.0" prefHeight="51.0" prefWidth="505.0" />
+      <TextField fx:id="comp_name" layoutX="362.0" layoutY="318.0" prefHeight="51.0" prefWidth="505.0" />
+      <TextField fx:id="contact" layoutX="362.0" layoutY="619.0" prefHeight="51.0" prefWidth="505.0" />
+      <PasswordField fx:id="password" layoutX="362.0" layoutY="419.0" prefHeight="51.0" prefWidth="505.0" />
+      <PasswordField fx:id="conf_pass" layoutX="362.0" layoutY="520.0" prefHeight="51.0" prefWidth="505.0" />
+      <TextArea fx:id="address" layoutX="349.0" layoutY="708.0" prefHeight="140.0" prefWidth="520.0" AnchorPane.leftAnchor="350.0" />
+   </children>
+</AnchorPane>
