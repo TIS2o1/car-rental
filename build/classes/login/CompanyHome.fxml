@@ -22,9 +22,9 @@
                   <Font name="Segoe Print" size="43.0" />
                </font>
             </Label>
-            <Label fx:id="CompanyName" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="709.0" layoutY="7.0" prefHeight="120.0" prefWidth="386.0" text="Label">
+            <Label fx:id="CompanyName" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="707.0" prefHeight="120.0" prefWidth="386.0" text="Label">
                <font>
-                  <Font name="Arial" size="40.0" />
+                  <Font name="Arial" size="43.0" />
                </font>
             </Label>
          </children>

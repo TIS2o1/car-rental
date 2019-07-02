@@ -3,17 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/dbConn/dbConnection.java</file>
-            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/ClientHome.fxml</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/forgotPasswordController.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/build.xml</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/home.fxml</file>
-            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/HomeController.java</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/SignUpCompanyController.java</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/signUpCompany.fxml</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/security/SecurePassword.java</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/CompanyHome.fxml</file>
-            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/forgotPassword.fxml</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/Login.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/AddCar.fxml</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/dbConn/dbConnection.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/ClientHome.fxml</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/AddCarController.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/HomeController.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/CarView.fxml</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/Car.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/SceneChanger.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/CompanyHomeController.java</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/forgotPassword.fxml</file>
+            <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/src/login/CarViewController.java</file>
             <file>file:/C:/Users/TIS_2o1/Documents/NetBeansProjects/login/nbproject/build-impl.xml</file>
         </group>
     </open-files>

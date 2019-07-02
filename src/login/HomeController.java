@@ -135,11 +135,12 @@ public class HomeController implements Initializable {
     
     public void changeSignUpButtonPushed(ActionEvent event) throws IOException{
         SceneChanger scene = new SceneChanger();
-        scene.changeScenes(event, "SignUpCompany.fxml", "Sign Up");
+        scene.changeScenes(event, "signUpCompany.fxml", "Sign Up");
     }
     
     public void forgotPasswordButtonPushed(ActionEvent event) throws IOException{
         SceneChanger scene = new SceneChanger();
         scene.changeScenes(event, "forgotPassword.fxml", "Forgot Password");
     }
+    
 }

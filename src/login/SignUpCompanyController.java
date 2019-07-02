@@ -77,7 +77,7 @@ public class SignUpCompanyController implements Initializable {
         String cont = contact.getText().toString();
         String addr = address.getText().toString();
     
-        String sql1 = "INSERT INTO USERS values (?,?,'company','no')";
+        String sql1 = "INSERT INTO USERS values (?,?,'company')";
         String sql2 = "INSERT INTO COMPANY values (?,?,?,?)";
         String sql3 = "SELECT * FROM COMPANY WHERE email=?";
         String sql4 ="INSERT INTO USER_PASSWORD values(?,?)";
