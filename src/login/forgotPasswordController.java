@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package login;
 
 import static dbConn.dbConnection.ConnectionStart;
@@ -23,6 +18,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import static security.SecurePassword.decrypt;
+import static security.SecurePassword.encrypt;
+
 
 /**
  * FXML Controller class
@@ -44,6 +41,7 @@ public class forgotPasswordController implements Initializable {
     @FXML
     private PasswordField password;
     
+    
     Stage dialogStage = new Stage();
     Scene scene;
     
@@ -60,46 +58,58 @@ public class forgotPasswordController implements Initializable {
         String eml = email.getText().toString();
         String pass = password.getText().toString();
    
-        String sql = "SELECT password,type from users where email=?";
-        String sql2 = "Insert into users values (?,?,?)";
-        
-        String userType = "";
+        //Checking old passwords with new password
+        String sql = "SELECT password from user_password where email=?";
+        //Inserting new password in tables
+        String sql2 = "Insert into user_password values (?,?)";
+        String sql3 = "Update users set password=? where email=?";
    
         try{
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, eml);
             result = preparedStatement.executeQuery();
-            if(!result.next()){
-                infoBox("Please enter correct Email", null, "Failed");
-            }else{
+            if(result.next()){
+                result.previous();
                 boolean flag = false;
+                String encryptedPass = null;
                 while(result.next()){
-                    userType = result.getString("type");
-                    String decryptedPass = result.getString("password");
-                    if(pass.equals(decrypt(decryptedPass))){
+                    encryptedPass = result.getString("password");
+                    if(pass.equals(decrypt(encryptedPass))){
                         flag = true;
+                        break;
                     }
-                    break;
                 }
                 if(flag==true){
                     infoBox("Please enter another password. This password has been used once", null, "Failed");
                 }else{
+                    //Inserting new password in users password table
+                    pass = encrypt(pass);
                     preparedStatement = conn.prepareStatement(sql2);
                     preparedStatement.setString(1, eml);
                     preparedStatement.setString(2, pass);
-                    preparedStatement.setString(3, userType);
                         
                     preparedStatement.executeUpdate();
+                    
+                    //updating user's password in user login table
+                    preparedStatement = conn.prepareStatement(sql3);
+                    preparedStatement.setString(1, pass);
+                    preparedStatement.setString(2, eml);
+                        
+                    preparedStatement.executeUpdate();
+                    
+                    
                         
                     infoBox("Password has been succesfully saved",null,"Success" );
                     Node node = (Node)event.getSource();
                     dialogStage = (Stage) node.getScene().getWindow();
                     dialogStage.close();
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("home.fxml")));
                     dialogStage.setScene(scene);
                     dialogStage.show();     
                     
                 }
+            }else{
+                infoBox("Please enter correct Email", null, "Failed");
             }
                 
 
