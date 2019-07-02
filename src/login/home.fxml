@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -10,50 +8,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.HomeController">
    <children>
-      <AnchorPane layoutX="-10.0" prefHeight="912.0" prefWidth="769.0" style="-fx-background-color: #A08383;">
+      <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #bb9d9d;">
          <children>
-            <Button layoutX="109.0" layoutY="580.0" mnemonicParsing="false" onAction="#changeSignUpButtonPushed" prefHeight="75.0" prefWidth="552.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Register as a company" textFill="#ebe8e8">
+            <PasswordField fx:id="password" layoutX="380.0" layoutY="312.0" />
+            <AnchorPane />
+              <Label fx:id="label" layoutX="202.0" layoutY="190.0" minHeight="16" minWidth="69" prefHeight="55.0" prefWidth="125.0" text="email">
                <font>
-                  <Font size="41.0" />
-               </font>
-            </Button>
-            <Button layoutX="109.0" layoutY="716.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="552.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Register as a client" textFill="#eee9e9">
-               <font>
-                  <Font size="41.0" />
-               </font>
-            </Button>
-            <Label layoutX="128.0" layoutY="127.0" text="Easy Wheels">
-               <font>
-                  <Font name="Segoe Print" size="79.0" />
+                  <Font size="45.0" />
                </font>
             </Label>
-            <ImageView fitHeight="168.0" fitWidth="362.0" layoutX="187.0" layoutY="306.0">
-               <image>
-                  <Image url="@images/car.png.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="759.0" prefHeight="912.0" prefWidth="636.0" style="-fx-background-color: #a17f7f;">
-         <children>
-            <Button layoutX="350.0" layoutY="617.0" mnemonicParsing="false" onAction="#forgotPasswordButtonPushed" prefHeight="83.0" prefWidth="263.0" style="-fx-background-color: transparent;" text="forgot password?" textFill="#eee8e8" underline="true" />
-            <Button layoutX="205.0" layoutY="728.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="89.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="login" />
-            <TextField fx:id="email" layoutX="37.0" layoutY="371.0" prefHeight="75.0" prefWidth="562.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: white;">
+            <Button layoutX="414.0" layoutY="430.0" mnemonicParsing="false" onAction="#loginAction" text="login" />
+            <Button layoutX="168.0" layoutY="596.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" prefHeight="75.0" prefWidth="552.0" text="Register as a company" />
+            <Label fx:id="label1" layoutX="137.0" layoutY="296.0" minHeight="16" minWidth="69" prefHeight="55.0" prefWidth="210.0" text="password">
                <font>
-                  <Font size="43.0" />
-               </font></TextField>
-            <PasswordField fx:id="password" layoutX="37.0" layoutY="514.0" prefHeight="96.0" prefWidth="562.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: White;">
-               <font>
-                  <Font size="43.0" />
-               </font>
-            </PasswordField>
-            <Label layoutX="37.0" layoutY="160.0" prefHeight="100.0" prefWidth="235.0" text="Sign In">
-               <font>
-                  <Font name="Arial" size="50.0" />
+                  <Font size="45.0" />
                </font>
             </Label>
+            <Button layoutX="168.0" layoutY="733.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="552.0" text="Register as a client" />
+            <TextField fx:id="email" layoutX="380.0" layoutY="200.0" />
+            <Button layoutX="699.0" layoutY="312.0" mnemonicParsing="false" onAction="#forgotPasswordButtonPushed" text="forgot password?" />
          </children>
       </AnchorPane>
    </children>

@@ -6,17 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CarViewController">
-   <children>
-      <TableView fx:id="table" layoutX="231.0" layoutY="34.0" prefHeight="786.0" prefWidth="955.0">
-        <columns>
-          <TableColumn fx:id="col_id" prefWidth="121.0" text="ID" />
-          <TableColumn fx:id="col_model" prefWidth="253.0" text="Model" />
-            <TableColumn fx:id="col_seats" prefWidth="162.0" text="No. of Seats" />
-            <TableColumn fx:id="col_price" onEditCommit="#editPrice" prefWidth="161.0" text="Price" />
-            <TableColumn fx:id="col_avail" onEditCommit="#editAvailability" prefWidth="257.0" text="Availability" />
-        </columns>
-      </TableView>
-      <Button layoutX="112.0" layoutY="362.0" mnemonicParsing="false" onAction="#deleteSelectedCars" text="Delete" />
-   </children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CarViewController">
+    
 </AnchorPane>

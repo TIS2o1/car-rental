@@ -5,66 +5,63 @@
  */
 package login;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
-
+/**
+ *
+ * @author TIS_2o1
+ */
 public class Car {
-    private SimpleStringProperty id,model,availability;
-    private SimpleIntegerProperty seat;
-    private SimpleDoubleProperty price;
+    String id,model,availab;
+    int seat;
+    double price;
     
     public Car(String id, String model, String availab, int seat, double price){
-        this.id = new SimpleStringProperty(id);
-        this.model = new SimpleStringProperty(model);
-        this.availability = new SimpleStringProperty(availab);
-        this.seat = new SimpleIntegerProperty(seat);
-        this.price = new SimpleDoubleProperty(price);
+        this.id = id;
+        this.model = model;
+        this.availab = availab;
+        this.seat = seat;
+        this.price = price;
         
     }
 
     public String getId() {
-        return id.get();
+        return id;
     }
 
     public void setId(String id) {
-        this.id = new SimpleStringProperty(id);
+        this.id = id;
     }
 
     public String getModel() {
-        return model.get();
+        return model;
     }
 
     public void setModel(String model) {
-        this.model = new SimpleStringProperty(model);
+        this.model = model;
     }
 
-    public String getAvailability() {
-        return availability.get();
+    public String getAvailab() {
+        return availab;
     }
 
-    public void setAvailability(String availab) {
-        this.availability = new SimpleStringProperty(availab);
+    public void setAvailab(String availab) {
+        this.availab = availab;
     }
 
     public int getSeat() {
-        return seat.get();
+        return seat;
     }
 
     public void setSeat(int seat) {
-        this.seat = new SimpleIntegerProperty(seat);
+        this.seat = seat;
     }
 
     public double getPrice() {
-        return price.get();
+        return price;
     }
 
     public void setPrice(double price) {
-        this.price = new SimpleDoubleProperty(price);
+        this.price = price;
     }
-
-    
     
     
     

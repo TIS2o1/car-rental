@@ -77,10 +77,9 @@ public class SignUpCompanyController implements Initializable {
         String cont = contact.getText().toString();
         String addr = address.getText().toString();
     
-        String sql1 = "INSERT INTO USERS values (?,?,'company','no')";
+        String sql1 = "INSERT INTO USERS values (?,?,'company')";
         String sql2 = "INSERT INTO COMPANY values (?,?,?,?)";
         String sql3 = "SELECT * FROM COMPANY WHERE email=?";
-        String sql4 ="INSERT INTO USER_PASSWORD values(?,?)";
         
         try{
             preparedStatement = conn.prepareStatement(sql3);
@@ -97,13 +96,6 @@ public class SignUpCompanyController implements Initializable {
                       preparedStatement.setString(1, eml);
                       preparedStatement.setString(2, pass);
                       preparedStatement.executeUpdate();
-                      
-                      preparedStatement = conn.prepareStatement(sql4);
-                      preparedStatement.setString(1, eml);
-                      preparedStatement.setString(2, pass); 
-                      preparedStatement.executeUpdate();
-                      
-                      
                       preparedStatement = conn.prepareStatement(sql2);
                       preparedStatement.setString(1, name);
                       preparedStatement.setString(2, cont);

@@ -34,7 +34,28 @@ import static security.SecurePassword.decrypt;
  */
 public class HomeController implements Initializable {
 
+    /**
+     * Initializes the controller class.
+     */
+    public void changeScreenButtonPushed(ActionEvent event) throws IOException{
+        Parent AnchorParent = FXMLLoader.load(getClass().getResource("signUpCompany.fxml"));
+        Scene AnchorScene = new Scene(AnchorParent);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(AnchorScene);
+        window.show();
+    }
     
+    public void forgotPasswordButtonPushed(ActionEvent event) throws IOException{
+        Parent AnchorParent = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
+        Scene AnchorScene = new Scene(AnchorParent);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(AnchorScene);
+        window.show();
+    }
+    
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
@@ -55,7 +76,7 @@ public class HomeController implements Initializable {
         conn = ConnectionStart();
     }
     
-    public void loginAction(ActionEvent event){ //allows user to login with correct email and password
+    public void loginAction(ActionEvent event){
         String eml = email.getText().toString();
         String pass = password.getText().toString();
    
@@ -69,43 +90,27 @@ public class HomeController implements Initializable {
                 String userType = result.getString("type");                
                 String decryptedPass = result.getString("password");
                 if(pass.equals(decrypt(decryptedPass))){
-                    Node node = (Node)event.getSource();
-                    dialogStage = (Stage) node.getScene().getWindow();
-                    dialogStage.close();
-                    if(userType.equals("company")){
-                        Company comp = createCompanyInstance(eml);
-                        showCompanyHomeView(event,comp);
-                        
-                    }
-                    else{
-                        scene = new Scene(FXMLLoader.load(getClass().getResource("ClientHome.fxml")));
-                    }
+                Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                if(userType.equals("company")){
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("CompanyHome.fxml")));
+                    CompanyHomeController c = new CompanyHomeController(eml);
                 }
                 else{
-                    infoBox("Please enter correct password", null, "Failed");
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("ClientHome.fxml")));
+                }
+                dialogStage.setScene(scene);
+                dialogStage.show();
                 }
             }else{
-                infoBox("Please enter correct Email", null, "Failed");
+                infoBox("Please enter correct Email and Password", null, "Failed");
             }
         }
         catch(Exception e){
             e.printStackTrace();
         }
         
-    }
-    
-    public Company createCompanyInstance(String eml) throws SQLException{
-        String sql = "Select cname,contact,location from company where email=? ";
-        preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.setString(1, eml);
-        result = preparedStatement.executeQuery();
-        result.next();
-        String compName = result.getString("cname");
-        String location = result.getString("location");
-        int contact = result.getInt("contact");
-        
-        Company comp = new Company(compName,eml,location,contact);
-        return comp;
     }
     
     public static void infoBox(String infoMessage, String headerText, String title){
@@ -116,30 +121,4 @@ public class HomeController implements Initializable {
         alert.showAndWait();
     }
     
-    public void showCompanyHomeView(ActionEvent event, Company comp) throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("CompanyHome.fxml"));
-        Parent parent = loader.load();
-        
-        Scene scene = new Scene(parent);
-        
-        CompanyHomeController controller = loader.getController();
-        controller.initData(comp);
-        
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        
-        window.setTitle("Home");
-        window.setScene(scene);
-        window.show();
-    }
-    
-    public void changeSignUpButtonPushed(ActionEvent event) throws IOException{
-        SceneChanger scene = new SceneChanger();
-        scene.changeScenes(event, "SignUpCompany.fxml", "Sign Up");
-    }
-    
-    public void forgotPasswordButtonPushed(ActionEvent event) throws IOException{
-        SceneChanger scene = new SceneChanger();
-        scene.changeScenes(event, "forgotPassword.fxml", "Forgot Password");
-    }
 }
