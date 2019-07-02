@@ -73,7 +73,6 @@ public class CarViewController implements Initializable {
         col_price.setCellValueFactory(new PropertyValueFactory<Car,Double>("price"));
         col_seats.setCellValueFactory(new PropertyValueFactory<Car,Integer>("seat"));
         
-        //table.setItems(getCars());
         
         table.setEditable(true);
         col_price.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
