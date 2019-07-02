@@ -120,6 +120,8 @@ public class AddCarController implements Initializable {
    public void companyInformation(Company comp){
         this.comp = comp;
     }
+   
+   
 }
 
     
