@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1157.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.AllCarViewController">
+   <children>
+      <Pane prefHeight="132.0" prefWidth="1157.0" style="-fx-background-color: #A08383;">
+         <children>
+            <Label layoutX="20.0" layoutY="45.0" text="Easy Wheels">
+               <font>
+                  <Font name="Segoe Print" size="45.0" />
+               </font>
+            </Label>
+            <Button layoutX="943.0" layoutY="59.0" mnemonicParsing="false" onAction="#goBackHome" style="-fx-background-color: transparent;" text="Home">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="96.0">
+                     <image>
+                        <Image url="@images/home2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <TableView fx:id="table" layoutX="55.0" layoutY="242.0" prefHeight="422.0" prefWidth="1030.0" style="-fx-background-color: transparent;">
+        <columns>
+          <TableColumn fx:id="col_name" prefWidth="125.0" text="Company" />
+            <TableColumn fx:id="col_image" prefWidth="148.0" text="Image" />
+            <TableColumn fx:id="col_model" prefWidth="190.0" text="Model" />
+            <TableColumn fx:id="col_rent" prefWidth="81.0" text="Rent" />
+            <TableColumn fx:id="col_seats" prefWidth="154.0" text="No. of Seats" />
+            <TableColumn fx:id="col_location" prefWidth="189.0" text="Location" />
+            <TableColumn fx:id="col_avail" prefWidth="142.0" text="Availability" />
+        </columns>
+      </TableView>
+      <TextField fx:id="search" layoutX="55.0" layoutY="172.0" onInputMethodTextChanged="#searchCar" onKeyReleased="#searchCar" promptText="search" />
+      <Button fx:id="rentButton" layoutX="55.0" layoutY="701.0" mnemonicParsing="false" onAction="#rentCarButton" style="-fx-background-color: transparent; -fx-border-color: black;" text="Rent this Car">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

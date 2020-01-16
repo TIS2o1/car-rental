@@ -9,20 +9,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1100.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CompanyHomeController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="970.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CompanyHomeController">
    <children>
-      <Button layoutY="250.0" mnemonicParsing="false" onAction="#showAddCarView" prefHeight="91.0" prefWidth="235.0" text="Add car" />
-      <Button layoutY="370.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="320.0" text="View Rent Information" />
-      <Button layoutY="492.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="235.0" text="LOG OUT" />
-      <Button layoutY="611.0" mnemonicParsing="false" onAction="#showViewCars" prefHeight="91.0" prefWidth="235.0" text="View all cars" />
-      <Pane prefHeight="120.0" prefWidth="1100.0" style="-fx-background-color: #A08383;">
+      <Button layoutX="8.0" layoutY="311.0" mnemonicParsing="false" onAction="#showAddCarView" prefHeight="107.0" prefWidth="309.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Add car">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
+      <Button layoutX="8.0" layoutY="589.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="107.0" prefWidth="309.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Log Out">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
+      <Button layoutX="8.0" layoutY="452.0" mnemonicParsing="false" onAction="#showViewCars" prefHeight="107.0" prefWidth="309.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="View all cars">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
+      <Pane prefHeight="120.0" prefWidth="1044.0" style="-fx-background-color: #A08383;">
          <children>
             <Label layoutX="34.0" layoutY="7.0" prefHeight="107.0" prefWidth="309.0" text="Easy Wheels">
                <font>
                   <Font name="Segoe Print" size="43.0" />
                </font>
             </Label>
-            <Label fx:id="CompanyName" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="707.0" prefHeight="120.0" prefWidth="386.0" text="Label">
+            <Label fx:id="CompanyName" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="638.0" layoutY="1.0" prefHeight="120.0" prefWidth="406.0" text="Label">
                <font>
                   <Font name="Arial" size="43.0" />
                </font>

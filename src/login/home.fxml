@@ -10,18 +10,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.HomeController">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.HomeController">
    <children>
-      <AnchorPane layoutX="-10.0" prefHeight="912.0" prefWidth="769.0" style="-fx-background-color: #A08383;">
+      <AnchorPane layoutX="-1.0" prefHeight="817.0" prefWidth="759.0" style="-fx-background-color: #A08383;">
          <children>
-            <Button layoutX="109.0" layoutY="580.0" mnemonicParsing="false" onAction="#changeSignUpButtonPushed" prefHeight="75.0" prefWidth="552.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Register as a company" textFill="#ebe8e8">
+            <Button layoutX="100.0" layoutY="502.0" mnemonicParsing="false" onAction="#registerCompany" prefHeight="75.0" prefWidth="552.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Register as a company" textFill="#ebe8e8">
                <font>
-                  <Font size="41.0" />
-               </font>
-            </Button>
-            <Button layoutX="109.0" layoutY="716.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="552.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Register as a client" textFill="#eee9e9">
-               <font>
-                  <Font size="41.0" />
+                  <Font size="40.0" />
                </font>
             </Button>
             <Label layoutX="128.0" layoutY="127.0" text="Easy Wheels">
@@ -34,19 +29,27 @@
                   <Image url="@images/car.png.png" />
                </image>
             </ImageView>
+            <Button layoutX="100.0" layoutY="620.0" mnemonicParsing="false" onAction="#registerClient" prefHeight="75.0" prefWidth="552.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Register as a client" textFill="#ebe8e8">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="759.0" prefHeight="912.0" prefWidth="636.0" style="-fx-background-color: #a17f7f;">
+      <AnchorPane layoutX="740.0" prefHeight="817.0" prefWidth="604.0" style="-fx-background-color: #a17f7f;">
          <children>
-            <Button layoutX="350.0" layoutY="617.0" mnemonicParsing="false" onAction="#forgotPasswordButtonPushed" prefHeight="83.0" prefWidth="263.0" style="-fx-background-color: transparent;" text="forgot password?" textFill="#eee8e8" underline="true" />
-            <Button layoutX="205.0" layoutY="728.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="89.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="login" />
-            <TextField fx:id="email" layoutX="37.0" layoutY="371.0" prefHeight="75.0" prefWidth="562.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: white;">
+            <Button alignment="CENTER_RIGHT" layoutX="372.0" layoutY="558.0" mnemonicParsing="false" onAction="#forgotPasswordButtonPushed" prefHeight="64.0" prefWidth="218.0" style="-fx-background-color: transparent;" text="forgot password?" textFill="#eee8e8" underline="true" />
+            <Button layoutX="172.0" layoutY="649.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="89.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="login">
                <font>
-                  <Font size="43.0" />
+                  <Font size="40.0" />
+               </font></Button>
+            <TextField fx:id="email" layoutX="26.0" layoutY="327.0" prefHeight="75.0" prefWidth="562.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: white;">
+               <font>
+                  <Font size="40.0" />
                </font></TextField>
-            <PasswordField fx:id="password" layoutX="37.0" layoutY="514.0" prefHeight="96.0" prefWidth="562.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: White;">
+            <PasswordField fx:id="password" layoutX="26.0" layoutY="462.0" prefHeight="96.0" prefWidth="562.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: White;">
                <font>
-                  <Font size="43.0" />
+                  <Font size="40.0" />
                </font>
             </PasswordField>
             <Label layoutX="37.0" layoutY="160.0" prefHeight="100.0" prefWidth="235.0" text="Sign In">

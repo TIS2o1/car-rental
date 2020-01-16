@@ -71,21 +71,24 @@ public class HomeController implements Initializable {
                 if(pass.equals(decrypt(decryptedPass))){
                     Node node = (Node)event.getSource();
                     dialogStage = (Stage) node.getScene().getWindow();
-                    dialogStage.close();
                     if(userType.equals("company")){
                         Company comp = createCompanyInstance(eml);
                         showCompanyHomeView(event,comp);
                         
                     }
                     else{
-                        scene = new Scene(FXMLLoader.load(getClass().getResource("ClientHome.fxml")));
+                        Client client = createClientInstance(eml);
+                        showClientHomeView(event,client);
                     }
                 }
                 else{
                     infoBox("Please enter correct password", null, "Failed");
+                    password.clear();
                 }
             }else{
                 infoBox("Please enter correct Email", null, "Failed");
+                email.clear();
+                password.clear();
             }
         }
         catch(Exception e){
@@ -133,14 +136,55 @@ public class HomeController implements Initializable {
         window.show();
     }
     
-    public void changeSignUpButtonPushed(ActionEvent event) throws IOException{
+    public void registerCompany(ActionEvent event) throws IOException{
         SceneChanger scene = new SceneChanger();
         scene.changeScenes(event, "signUpCompany.fxml", "Sign Up");
+    }
+    
+    public void registerClient(ActionEvent event) throws IOException{
+        SceneChanger scene = new SceneChanger();
+        scene.changeScenes(event, "SignUpClient.fxml", "Sign Up");
     }
     
     public void forgotPasswordButtonPushed(ActionEvent event) throws IOException{
         SceneChanger scene = new SceneChanger();
         scene.changeScenes(event, "forgotPassword.fxml", "Forgot Password");
     }
+    
+    
+    public Client createClientInstance(String eml) throws SQLException{
+        String sql = "Select cl_name,contact,address,license_no from client where email=? ";
+        preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, eml);
+        result = preparedStatement.executeQuery();
+        result.next();
+        String clientName = result.getString("cl_name");
+        String addr = result.getString("address");
+        String contact = result.getString("contact");
+        int license = result.getInt("license_no");
+        
+        Client client = new Client(clientName,eml,addr,license,contact);
+        return client;
+    }
+    
+    
+    public void showClientHomeView(ActionEvent event, Client clnt) throws IOException, SQLException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ClientHome.fxml"));
+        Parent parent = loader.load();
+        
+        Scene scene = new Scene(parent);
+        
+        ClientHomeController controller = loader.getController();
+        controller.initData(clnt);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        
+        window.setTitle("Home");
+        window.setScene(scene);
+        window.show();
+    }
+    
+    
     
 }
