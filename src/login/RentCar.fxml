@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1000.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.RentCarController">
+   <children>
+      <Pane prefHeight="132.0" prefWidth="1000.0" style="-fx-background-color: #A08383;">
+         <children>
+            <Label layoutX="20.0" layoutY="45.0" text="Easy Wheels">
+               <font>
+                  <Font name="Segoe Print" size="45.0" />
+               </font>
+            </Label>
+            <Button layoutX="786.0" layoutY="49.0" mnemonicParsing="false" onAction="#goBackHome" style="-fx-background-color: transparent;" text="Home">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="96.0">
+                     <image>
+                        <Image url="@images/home2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="40.0" layoutY="260.0" prefHeight="409.0" prefWidth="649.0" style="-fx-border-color: black;">
+         <children>
+            <Label layoutX="34.0" layoutY="43.0" prefHeight="45.0" prefWidth="153.0" text="Car Model :">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="pick" layoutX="34.0" layoutY="161.0" prefHeight="51.0" prefWidth="259.0" />
+            <Label layoutX="34.0" layoutY="104.0" prefHeight="45.0" prefWidth="193.0" text="Pick-Up Date">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="drop" layoutX="337.0" layoutY="161.0" prefHeight="51.0" prefWidth="259.0" />
+            <Label layoutX="337.0" layoutY="104.0" prefHeight="45.0" prefWidth="193.0" text="Drop-Off Date">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="checkBox" layoutX="34.0" layoutY="243.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="273.0" selected="true" text="Hire Driver">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="34.0" layoutY="314.0" prefHeight="45.0" prefWidth="153.0" text="Total Rent :">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="model" layoutX="210.0" layoutY="43.0" prefHeight="45.0" prefWidth="378.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="rent" layoutX="210.0" layoutY="314.0" prefHeight="45.0" prefWidth="273.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button layoutX="713.0" layoutY="260.0" mnemonicParsing="false" onAction="#calculateRent" prefHeight="92.0" prefWidth="273.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Confirm Date">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="713.0" layoutY="373.0" mnemonicParsing="false" onAction="#confirmCar" prefHeight="92.0" prefWidth="273.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Confirm Car">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Label layoutX="40.0" layoutY="190.0" text="Fill Out Rent Information">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="713.0" layoutY="486.0" mnemonicParsing="false" onAction="#goBackButton" prefHeight="92.0" prefWidth="273.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Go Back">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
