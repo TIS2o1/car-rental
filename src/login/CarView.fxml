@@ -1,22 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CarViewController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1050.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CarViewController">
    <children>
-      <TableView fx:id="table" layoutX="231.0" layoutY="34.0" prefHeight="786.0" prefWidth="955.0">
+      <TableView fx:id="table" layoutX="46.0" layoutY="192.0" prefHeight="563.0" prefWidth="805.0" style="-fx-background-color: transparent; -fx-border-color: black;">
         <columns>
-          <TableColumn fx:id="col_id" prefWidth="121.0" text="ID" />
-          <TableColumn fx:id="col_model" prefWidth="253.0" text="Model" />
-            <TableColumn fx:id="col_seats" prefWidth="162.0" text="No. of Seats" />
-            <TableColumn fx:id="col_price" onEditCommit="#editPrice" prefWidth="161.0" text="Price" />
-            <TableColumn fx:id="col_avail" onEditCommit="#editAvailability" prefWidth="257.0" text="Availability" />
+          <TableColumn fx:id="col_id" prefWidth="99.0" text="ID" />
+            <TableColumn fx:id="col_image" onEditCommit="#editAvailability" prefWidth="133.0" text="Car Image" />
+          <TableColumn fx:id="col_model" onEditCommit="#editModel" prefWidth="168.0" text="Model" />
+            <TableColumn fx:id="col_seats" onEditCommit="#editSeats" prefWidth="148.0" text="No. of Seats" />
+            <TableColumn fx:id="col_price" onEditCommit="#editPrice" prefWidth="113.0" style="-fx-background-color: transparent;" text="Rent" />
+            <TableColumn fx:id="col_avail" onEditCommit="#editAvailability" prefWidth="142.0" text="Availability" />
         </columns>
       </TableView>
-      <Button layoutX="112.0" layoutY="362.0" mnemonicParsing="false" onAction="#deleteSelectedCars" text="Delete" />
+      <Button layoutX="879.0" layoutY="369.0" mnemonicParsing="false" onAction="#deleteSelectedCars" prefHeight="105.0" prefWidth="293.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Delete">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Pane prefHeight="126.0" prefWidth="1200.0" style="-fx-background-color: #A08383;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="105.0" prefWidth="370.0" text="Easy Wheels">
+               <font>
+                  <Font name="Segoe Print" size="49.0" />
+               </font>
+            </Label>
+            <Button layoutX="972.0" layoutY="39.0" mnemonicParsing="false" onAction="#goBackHome" style="-fx-background-color: transparent;" text="Home">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="96.0">
+                     <image>
+                        <Image url="@images/home2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
