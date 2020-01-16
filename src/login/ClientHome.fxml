@@ -1,11 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="722.0" prefWidth="1000.0" style="-fx-background-color: #bb9d9d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.ClientHomeController">
+   <children>
+      <Pane prefHeight="143.0" prefWidth="1000.0" style="-fx-background-color: #A08383;">
+         <children>
+            <Label layoutX="25.0" layoutY="55.0" text="Easy Wheels">
+               <font>
+                  <Font name="Segoe Print" size="45.0" />
+               </font>
+            </Label>
+            <Label fx:id="ClientName" alignment="CENTER_RIGHT" layoutX="496.0" layoutY="40.0" prefHeight="111.0" prefWidth="504.0" text="Label">
+               <font>
+                  <Font name="Arial" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="5.0" layoutY="333.0" mnemonicParsing="false" onAction="#showAllCars" prefHeight="111.0" prefWidth="281.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Rent A Car">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
+      <Button layoutX="5.0" layoutY="472.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="111.0" prefWidth="281.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="Log Out">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Label layoutX="435.0" layoutY="259.0" prefHeight="35.0" prefWidth="390.0" text="Your Rent Information">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="435.0" layoutY="305.0" prefHeight="309.0" prefWidth="560.0" style="-fx-border-color: black;">
+         <children>
+            <Label fx:id="car_model" layoutX="37.0" layoutY="53.0" text="Car Model:" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lease_start" layoutX="34.0" layoutY="101.0" text="Lease Start:" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lease_end" layoutX="46.0" layoutY="147.0" prefHeight="39.0" prefWidth="130.0" text="Lease End:" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="total_rent" layoutX="46.0" layoutY="196.0" prefHeight="39.0" prefWidth="130.0" text="Total Rent" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="driver_hire" layoutX="27.0" layoutY="244.0" prefHeight="39.0" prefWidth="149.0" text="Driver hired" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="model" layoutX="192.0" layoutY="53.0" prefHeight="39.0" prefWidth="228.0" text="Label" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="start" layoutX="192.0" layoutY="101.0" prefHeight="39.0" prefWidth="228.0" text="Label" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="end" layoutX="192.0" layoutY="147.0" prefHeight="39.0" prefWidth="228.0" text="Label" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="rent" layoutX="192.0" layoutY="196.0" prefHeight="39.0" prefWidth="228.0" text="Label" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="hire" layoutX="192.0" layoutY="244.0" prefHeight="39.0" prefWidth="228.0" text="Label" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="label" layoutX="37.0" layoutY="14.0" prefHeight="35.0" prefWidth="455.0" text="Label" visible="false">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
