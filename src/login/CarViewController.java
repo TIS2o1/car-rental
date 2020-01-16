@@ -6,7 +6,10 @@
 package login;
 
 import static dbConn.dbConnection.ConnectionStart;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +19,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -50,6 +62,8 @@ public class CarViewController implements Initializable {
     private TableColumn<Car,Double> col_price;
     @FXML
     private TableColumn<Car,String> col_avail;
+    @FXML private TableColumn<Car,ImageView> col_image;
+    ObservableList<Car> car = FXCollections.observableArrayList();
     
     
     Connection conn = null;
@@ -65,13 +79,16 @@ public class CarViewController implements Initializable {
     
     
     
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        col_id.setCellValueFactory(new PropertyValueFactory<Car,String>("id"));
-        col_model.setCellValueFactory(new PropertyValueFactory<Car,String>("model"));
-        col_avail.setCellValueFactory(new PropertyValueFactory<Car,String>("availability"));
-        col_price.setCellValueFactory(new PropertyValueFactory<Car,Double>("price"));
-        col_seats.setCellValueFactory(new PropertyValueFactory<Car,Integer>("seat"));
+        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_model.setCellValueFactory(new PropertyValueFactory<>("model"));
+        col_avail.setCellValueFactory(new PropertyValueFactory<>("availability"));
+        col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        col_seats.setCellValueFactory(new PropertyValueFactory<>("seat"));
+        //col_image.setPrefWidth(80);
+        col_image.setCellValueFactory(new PropertyValueFactory<>("image"));
         
         
         table.setEditable(true);
@@ -81,27 +98,34 @@ public class CarViewController implements Initializable {
         col_model.setCellFactory(TextFieldTableCell.forTableColumn());
         
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         
         
         
     }    
     
-    public ObservableList<Car> getCars(){
-        ObservableList<Car> car = FXCollections.observableArrayList();
+    public void getCars(){
         try{
-            ps = conn.prepareStatement("Select id,model,no_of_seats,price,availability from cars where cname=?");
+            ps = conn.prepareStatement("Select * from cars where cname=?");
             ps.setString(1,comp.getName());
             result = ps.executeQuery();
             
             while(result.next()){
-                car.add(new Car(result.getString("id"),result.getString("model"),result.getString("availability"),result.getInt("no_of_seats"),result.getDouble("price")));
+                Blob blob = result.getBlob("image");
+                byte[] data = blob.getBytes(1, (int) blob.length());
+                Image image1 = new Image(new ByteArrayInputStream(data));
+                ImageView imageview = new ImageView();
+                imageview.setFitHeight(100);
+                imageview.setFitWidth(100);
+                imageview.setImage(image1);
+                car.add(new Car(result.getString("id"),result.getString("model"),result.getString("availability"),result.getInt("no_of_seats"),result.getDouble("price"),imageview));
             }
+            
         }
         catch(SQLException ex){
             Logger.getLogger(CarViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return car;
     }
     
     public void editPrice(CellEditEvent edittedCell) throws SQLException{
@@ -113,6 +137,7 @@ public class CarViewController implements Initializable {
         ps.setDouble(1,carPrice);
         ps.setString(2,selectedCar.getId());
         ps.executeUpdate();
+        table.setItems(car);
     }
     
     public void editSeats(CellEditEvent edittedCell) throws SQLException{
@@ -120,10 +145,11 @@ public class CarViewController implements Initializable {
         int seats = Integer.parseInt(edittedCell.getNewValue().toString());
         selectedCar.setPrice(seats);
         
-        ps = conn.prepareStatement("UPDATE cars SET price=? WHERE id=?");
+        ps = conn.prepareStatement("UPDATE cars SET no_of_seats=? WHERE id=?");
         ps.setDouble(1,seats);
         ps.setString(2,selectedCar.getId());
         ps.executeUpdate();
+        table.setItems(car);
     }
     
     public void editAvailability(CellEditEvent edittedCell) throws SQLException{
@@ -134,16 +160,18 @@ public class CarViewController implements Initializable {
         ps.setString(1,selectedCar.getAvailability());
         ps.setString(2,selectedCar.getId());
         ps.executeUpdate();
+        table.setItems(car);
     }
     
     public void editModel(CellEditEvent edittedCell) throws SQLException{
         Car selectedCar = table.getSelectionModel().getSelectedItem();
         selectedCar.setAvailability(edittedCell.getNewValue().toString());
         
-        ps = conn.prepareStatement("UPDATE cars SET availability=? WHERE id=?");
+        ps = conn.prepareStatement("UPDATE cars SET model=? WHERE id=?");
         ps.setString(1,selectedCar.getModel());
         ps.setString(2,selectedCar.getId());
         ps.executeUpdate();
+        table.setItems(car);
     }
     
     public void deleteSelectedCars() throws SQLException{
@@ -151,17 +179,36 @@ public class CarViewController implements Initializable {
         allCars = table.getItems();
         selectedRows = table.getSelectionModel().getSelectedItems();
         
-        for(Car car : selectedRows){
-            allCars.remove(car);
+        for(Car cars : selectedRows){
+            allCars.remove(cars);
             ps = conn.prepareStatement("DELETE from cars WHERE id=?");
-            ps.setString(1,car.getId());
+            ps.setString(1,cars.getId());
             ps.executeUpdate();
         }
     }
     
     public void createTable(Company comp){
         this.comp = comp;
-        table.setItems(getCars());
+        getCars();
+        table.setItems(car);
+    }
+    
+    @FXML
+    public void goBackHome(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("CompanyHome.fxml"));
+        Parent parent = loader.load();
+        
+        Scene scene = new Scene(parent);
+        
+        CompanyHomeController controller = loader.getController();
+        controller.initData(comp);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        
+        window.setTitle("Home");
+        window.setScene(scene);
+        window.show();
     }
     
     
