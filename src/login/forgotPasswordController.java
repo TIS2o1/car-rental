@@ -1,6 +1,7 @@
 package login;
 
 import static dbConn.dbConnection.ConnectionStart;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -81,6 +82,9 @@ public class forgotPasswordController implements Initializable {
                 }
                 if(flag==true){
                     infoBox("Please enter another password. This password has been used once", null, "Failed");
+                }else if(validatePassword(pass)==false){
+                    infoBox("Password must be greater than 7 characters", null, "Failed");
+                    password.clear();
                 }else{
                     //Inserting new password in users password table
                     pass = encrypt(pass);
@@ -110,6 +114,8 @@ public class forgotPasswordController implements Initializable {
                 }
             }else{
                 infoBox("Please enter correct Email", null, "Failed");
+                email.clear();
+                password.clear();
             }
                 
 
@@ -126,6 +132,20 @@ public class forgotPasswordController implements Initializable {
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.showAndWait();
+    }
+    
+    private boolean validatePassword(String password){
+        if(password.length()>7){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public void signInButton(ActionEvent event) throws IOException{
+        SceneChanger scene = new SceneChanger();
+        scene.changeScenes(event, "home.fxml", "Sign In");
     }
     
     

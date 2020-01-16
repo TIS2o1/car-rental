@@ -5,52 +5,45 @@
  */
 package login;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import static dbConn.dbConnection.ConnectionStart;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import static security.SecurePassword.encrypt;
-
 
 /**
  * FXML Controller class
  *
  * @author TIS_2o1
  */
-public class SignUpCompanyController implements Initializable {
+public class SignUpClientController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    @FXML
+     @FXML
     private TextField email;
     @FXML
-    private TextField comp_name;
+    private TextField name;
     @FXML
     private PasswordField password;
     @FXML
@@ -66,24 +59,28 @@ public class SignUpCompanyController implements Initializable {
     Connection conn = null;
     PreparedStatement preparedStatement = null;
     ResultSet result = null;
- 
-    public SignUpCompanyController() throws SQLException {
-        conn = ConnectionStart();
-    }
     
     
     
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+         try {
+             conn = ConnectionStart();
+         } catch (SQLException ex) {
+             Logger.getLogger(SignUpClientController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }    
     public void SignUpAction(ActionEvent event){
         String eml = email.getText().toString();
-        String name = comp_name.getText().toString();
+        String cl_name = name.getText().toString();
         String pass = password.getText().toString();
         String confPass = conf_pass.getText().toString();
         String cont = contact.getText().toString();
         String addr = address.getText().toString();
     
-        String sql1 = "INSERT INTO USERS values (?,?,'company')";
-        String sql2 = "INSERT INTO COMPANY values (?,?,?,?)";
-        String sql3 = "SELECT * FROM COMPANY WHERE email=?";
+        String sql1 = "INSERT INTO USERS values (?,?,'client')";
+        String sql2 = "INSERT INTO CLIENT (cl_name,email,address,contact) values (?,?,?,?)";
+        String sql3 = "SELECT * FROM CLIENT WHERE email=?";
         String sql4 ="INSERT INTO USER_PASSWORD values(?,?)";
         
         try{
@@ -122,14 +119,13 @@ public class SignUpCompanyController implements Initializable {
                       
                       
                       preparedStatement = conn.prepareStatement(sql2);
-                      preparedStatement.setString(1, name);
-                      preparedStatement.setString(2, cont);
+                      preparedStatement.setString(1, cl_name);
+                      preparedStatement.setString(2, eml);
                       preparedStatement.setString(3, addr);
-                      preparedStatement.setString(4, eml);
+                      preparedStatement.setString(4, cont);
                       preparedStatement.executeUpdate();
                       
                       infoBox("Sign Up Successfull",null,"Success" );
-                      
                       Node node = (Node)event.getSource();
                       dialogStage = (Stage) node.getScene().getWindow();
                       dialogStage.close();
@@ -146,7 +142,7 @@ public class SignUpCompanyController implements Initializable {
         
     }
     public static void infoBox(String infoMessage, String headerText, String title){
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText(infoMessage);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
@@ -190,4 +186,3 @@ public class SignUpCompanyController implements Initializable {
     }
     
 }
-

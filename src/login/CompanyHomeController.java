@@ -47,8 +47,8 @@ public class CompanyHomeController implements Initializable {
         
         Scene scene = new Scene(parent);
         
-        //AddCarController controller = loader.getController();
-        //controller.companyInformation(comp);
+        AddCarController controller = loader.getController();
+        controller.companyInformation(comp);
         
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         
@@ -77,5 +77,10 @@ public class CompanyHomeController implements Initializable {
     public void initData(Company comp){
         this.comp = comp;
         CompanyName.setText((this.comp).getName());
+    }
+    
+    public void LogOut(ActionEvent event) throws IOException{
+        SceneChanger scene = new SceneChanger();
+        scene.changeScenes(event, "home.fxml", "Sign In");
     }
 }
